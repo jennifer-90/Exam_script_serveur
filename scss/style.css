@@ -1,0 +1,43 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* - - - - - MENU - - - - - - */
+nav {
+  background-color: #f2f2f2;
+  padding: 1.5rem;
+  font-family: "Amatic SC", cursive;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+}
+nav a:hover {
+  background-color: olivedrab;
+  padding: 1rem;
+  color: white;
+}
+
+/* - - - - - LISTE DES COURS - - - - - - */
+table {
+  border: dotted black 1px;
+  margin: auto;
+  line-height: 1.5rem;
+  width: 60rem;
+}
+table th, table td {
+  border: dotted black 1px;
+}
+table th:hover, table td:hover {
+  background-color: olivedrab;
+  color: white;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */
