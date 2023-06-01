@@ -1,26 +1,20 @@
 <?php
 
+/* -- page/create  ==> °°app/create°° ==> DB  -- */
 
+$url= 'index.php?sent=page/create';
 
-
-
-
-if(!empty(trim($_POST['username'])) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && password_hash(($_POST['password']), PASSWORD_DEFAULT)){
-
-
+if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
 
     foreach($_POST as $key => $values){
         $$key = $values;
     }
 
     $parametre_requete=[
-        $username,
+        trim($username),
+        password_hash($password, PASSWORD_DEFAULT),
         $email,
-        $password
-
     ];
-
-
 
     /* - - - - CONNEXION A LA DB - - - - */
 
@@ -36,7 +30,13 @@ if(!empty(trim($_POST['username'])) && filter_var(($_POST['email']), FILTER_VALI
 
     $requete->execute($parametre_requete);
 
+    $url= 'index.php?sent=page/profile';
+
+
+
 } else {
     echo 'Les champs sont vides';
 }
 
+header('Location'. $url);
+echo 'bienvenue '.$username;
