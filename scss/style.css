@@ -68,14 +68,30 @@ table th:hover, table td:hover {
   border-radius: 15px;
   height: 2rem;
   width: 20rem;
+  border: hidden;
+  box-shadow: rgba(105, 105, 105, 0.56) 1px 1px 1px 1px;
+}
+.formu input:focus {
+  outline: none;
+  border: none;
 }
 .formu button {
   border-radius: 15px;
   height: 2rem;
   width: 20rem;
+  border: hidden;
+  box-shadow: rgba(105, 105, 105, 0.56) 1px 1px 1px 1px;
 }
 .formu button a {
   text-decoration: none;
+}
+.formu button:hover {
+  background-color: rgba(105, 105, 105, 0.48);
+}
+
+input[type=submit]:hover {
+  background-color: rgba(105, 105, 105, 0.48);
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@
             <br><h2>** SE CONNECTER ** </h2><br>
             <label>
                 <span>Identifiant:<br><br></span>
-                <input type="text" name="username" id="username" placeholder="identifiant">
+                <input type="text" name="username" id="username" placeholder="Identifiant">
             </label><br><br>
             <label>
                 <span>Mot de passe:<br><br></span>

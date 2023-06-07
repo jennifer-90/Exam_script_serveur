@@ -27,14 +27,17 @@
 
         $requete = 'SELECT * FROM course';
 
+        $query = $connexion->query($requete);
+        /* - mysqli::query -- mysqli_query — Effectue une requête sur la base de données - */
+
     /* - - - EXECUTE - - - */
 
-        foreach($connexion->query($requete) as $key) {
-            /* - mysqli::query -- mysqli_query — Effectue une requête sur la base de données - */
+        foreach( $query as $key) {
+
 
             /* - - - FETCH - - - */
 
-            echo '<tr><td>'.$key['name'].'</td><td>'.$key['code'].'</td></tr>';
+            echo '<tr><td>&nbsp;&#x2666; '.$key['name'].'</td><td>'.$key['code'].'</td></tr>';
         }
 
     ?>

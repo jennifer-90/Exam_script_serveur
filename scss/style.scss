@@ -77,14 +77,37 @@ table{
         border-radius: 15px;
         height: 2rem;
         width: 20rem;
+        border: hidden;
+        box-shadow: rgba(105, 105, 105, 0.56) 1px 1px 1px 1px;
+
+        &:focus{
+            outline: none;
+            border: none;
+        }
     }
 
     button{
         border-radius: 15px;
         height: 2rem;
         width: 20rem;
+        border: hidden;
+        box-shadow: rgba(105, 105, 105, 0.56) 1px 1px 1px 1px;
+
         a{
             text-decoration: none;
         }
+
+        &:hover{
+            background-color: rgba(105, 105, 105, 0.48);
+        }
+    }
+}
+
+input[type='submit']{
+
+    &:hover{
+        background-color: rgba(105, 105, 105, 0.48);
+        cursor: pointer;
+
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-/* -- page/create  ==> °°app/create°° ==> DB  -- */
+/* -- page/create  ==> °°app/create°° ==> DB  ==>  page/login -- */
 
 $url= 'index.php?sent=page/create';
+$message = '';
 
 if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
 
@@ -30,13 +31,15 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
 
     $requete->execute($parametre_requete);
 
-    $url= 'index.php?sent=page/profile';
-
-
+    if($requete->rowCount()){
+        $url= 'index.php?sent=page/login';
+    }
 
 } else {
     echo 'Les champs sont vides';
-}
+    }
 
-header('Location'. $url);
-echo 'bienvenue '.$username;
+
+header('Location:'. $url);
+echo $message.='Bienvenue '.$username;
+die;

@@ -7,7 +7,7 @@
             <br><h2>** CREATION D'UN COMPTE** </h2><br>
             <label>
                 <span>Identifiant:<br><br></span>
-                <input type="text" name="username" id="username" placeholder="identifiant">
+                <input type="text" name="username" id="username" placeholder="Identifiant">
             </label><br><br>
             <label>
                 <span>Mot de passe:<br><br></span>
@@ -22,3 +22,4 @@
     </form>
     <button type="submit" class="submit"><a href="index.php?sent=page/login">Revenir à Login &#128281;</a></button>
 </div>
+
