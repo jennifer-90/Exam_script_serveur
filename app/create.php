@@ -7,39 +7,57 @@ $message = '';
 
 if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
 
-    foreach($_POST as $key => $values){
-        $$key = $values;
-    }
+    if(userExist('username', ($_POST['username']))){
+        $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
+        $_SESSION['alert-color'] = 'danger';
+        header('Location: index.php?sent=page/create' );
 
-    $parametre_requete=[
-        trim($username),
-        password_hash($password, PASSWORD_DEFAULT),
-        $email,
-    ];
+    } else {
 
-    /* - - - - CONNEXION A LA DB - - - - */
 
-    /* - CONNECT - */
+        foreach ($_POST as $key => $values) {
+            $$key = $values;
+        }
 
-    global $connexion;
 
-    /* - QUERY - */
+        $parametre_requete = [
+            trim($username),
+            password_hash($password, PASSWORD_DEFAULT),
+            $email,
+        ];
 
-    $requete = $connexion->prepare("INSERT INTO user (username, password, email, created ) VALUES (?, ?, ?, NOW() )");
 
-    /* - EXECUTE - */
+        /* - - - - CONNEXION A LA DB - - - - */
 
-    $requete->execute($parametre_requete);
+        /* - CONNECT - */
 
-    if($requete->rowCount()){
-        $url= 'index.php?sent=page/login';
-    }
+        global $connexion;
 
+        /* - QUERY - */
+
+        $requete = $connexion->prepare("INSERT INTO user (username, password, email, created ) VALUES (?, ?, ?, NOW() )");
+
+        /* - EXECUTE - */
+
+        $requete->execute($parametre_requete);
+
+
+        if ($requete->rowCount()) {
+            $url = 'index.php?sent=page/login';
+
+            $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
+            $_SESSION['alert-color'] = 'success';
+
+        }
+
+
+    } /* - Le "sinon" de ma fct userExist - */
+
+/* - FIN DE MON TOUT PREMIER IF - */
 } else {
-    echo 'Les champs sont vides';
+    $_SESSION['alert'] = '&#9940; La création de votre compte a échouée, veuillez recommencer &#9940;';
+    $_SESSION['alert-color'] = 'danger';
     }
 
 
 header('Location:'. $url);
-echo $message.='Bienvenue '.$username;
-die;

@@ -94,4 +94,21 @@ input[type=submit]:hover {
   cursor: pointer;
 }
 
+/* - - - - - $_SESSION - - - - - - */
+.alert-success {
+  background-color: rgba(0, 255, 0, 0.22);
+  height: 5rem;
+  color: #000000;
+  font-size: 18px;
+  text-align: center;
+}
+
+.alert-danger {
+  background-color: rgba(255, 69, 0, 0.29);
+  height: 5rem;
+  color: #000000;
+  font-size: 18px;
+  text-align: center;
+}
+
 /*# sourceMappingURL=style.css.map */

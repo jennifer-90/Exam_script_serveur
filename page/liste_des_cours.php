@@ -2,7 +2,7 @@
 
 <?php
 
-
+/* - BRANCHE TEST - */
 
 ?>
 
@@ -20,29 +20,41 @@
     <?php
 
     /* - - - CONNECT - - - */
+
     connexion();
     global $connexion;
 
+
     /* - - - QUERY/PREPARE - - - */
 
-        $requete = 'SELECT * FROM course';
+        $sql = 'SELECT * FROM course';
 
-        $query = $connexion->query($requete);
-        /* - mysqli::query -- mysqli_query — Effectue une requête sur la base de données - */
+        $query = $connexion->prepare($sql);
+
 
     /* - - - EXECUTE - - - */
 
-        foreach( $query as $key) {
+        $query->execute();
+
+         $result = $query->fetchObject();
 
 
-            /* - - - FETCH - - - */
+    while ($result) {
+        echo '<tr><td>&nbsp;&#x2666; ' . $result->name . '</td><td>' . $result->code . '</td></tr>';
+        $result = $query->fetchObject(); // récupérer la prochaine ligne de résultats
+        /* - un foreach ne fonctionne pas car le techObject ne renvoie qu'un seul objet à la fois - */
+    }
 
-            echo '<tr><td>&nbsp;&#x2666; '.$key['name'].'</td><td>'.$key['code'].'</td></tr>';
-        }
+
+    /* - - var_dump($result); - - */
+
 
     ?>
     </tbody>
 </table>
+
+
+
 
 
 
