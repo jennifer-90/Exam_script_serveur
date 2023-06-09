@@ -4,6 +4,7 @@ session_start();
 include_once 'config.php';
 include_once 'lib/fct_menu.php';
 include_once 'lib/connexion_pdo.php';
+include_once 'lib/librairy.php';
 
 
 require_once 'page/header.html';

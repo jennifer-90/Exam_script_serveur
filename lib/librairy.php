@@ -1,24 +1,19 @@
 <?php
 
 
-function userExist($champs, $values){
+function userExist($table, $champs, array $valuesPost){
 
     $connexion= connexion();
 
-    $sql="SELECT $champs FROM user WHERE $champs = ?";
+    $sql="SELECT $table FROM user WHERE $champs = ?";
+
     $query = $connexion->prepare($sql);
-    $query->execute();
+    $query->execute($valuesPost);
 
-    $requete = $query->fetchAll();
+    $result = $query->fetchAll();
 
-    $array=[];
+    return count($result) > 0;
 
-    foreach($requete as $key){
-        if($key[$champs] === $values){
-        return true;
-        }
-    }
-    return false;
 };
 
 

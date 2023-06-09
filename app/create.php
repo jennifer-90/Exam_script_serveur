@@ -6,14 +6,11 @@ $url= 'index.php?sent=page/create';
 $message = '';
 
 if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
-
-    if(userExist('username', ($_POST['username']))){
+    if(userExist('username', 'username', [$_POST['username']])){
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
         header('Location: index.php?sent=page/create' );
-
     } else {
-
 
         foreach ($_POST as $key => $values) {
             $$key = $values;
@@ -51,13 +48,11 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
         }
 
 
-    } /* - Le "sinon" de ma fct userExist - */
+    } /* - Fermeture du "else" de ma fct userExist - */
 
 /* - FIN DE MON TOUT PREMIER IF - */
 } else {
     $_SESSION['alert'] = '&#9940; La création de votre compte a échouée, veuillez recommencer &#9940;';
     $_SESSION['alert-color'] = 'danger';
     }
-
-
 header('Location:'. $url);
