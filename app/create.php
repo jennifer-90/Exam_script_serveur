@@ -1,20 +1,19 @@
 <?php
-$num_admin= 87;
+
+
 
 /* -- page/create  ==> °°app/create°° ==> DB  ==>  page/login -- */
 
-$url= 'index.php?sent=page/create';
+$url = 'index.php?sent=page/create';
 
 if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
 
     if(userExist('username', 'username', [$_POST['username']])){
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
-
         header('Location: index.php?sent=page/create' );
 
     } else {
-
         foreach ($_POST as $key => $values) {
             $$key = $values;
         }
@@ -28,50 +27,36 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
 
 
         /* - - - - CONNEXION A LA DB - - - - */
-
-        /* - CONNECT - */
-
+        /* - - - - CONNECT - */
         global $connexion;
-
-        /* - QUERY - */
-
+        /* - - - - QUERY - */
         $requete = $connexion->prepare("INSERT INTO user (username, password, email, created ) VALUES (?, ?, ?, NOW() )");
-
-        /* - EXECUTE - */
-
+        /* - - - - EXECUTE - */
         $requete->execute($parametre_requete);
 
 
-
-
-        if ($requete->rowCount()) {
-
+        if($requete->rowCount()) {
             $user_id = $connexion->lastInsertId(); // Je recupere l'id du dernier utlisateur
 
             /*----------------------------------------------------------------------------------------------------*/
 
-            /* - Je fais une recherche dans ma base de données pour avoir la ligne de l'id $X - */
-            $sql_admin = $connexion->prepare("SELECT id FROM user WHERE id = ?");
-            $sql_admin->bindValue(1, $num_admin);
-            $result_admin = $sql_admin->execute(); // ATTENTION renvoi un booleen et non une valeur! Utiliser la
-            // methode fetch (all - object) pour avoir le résultat de la requete
-
-            /*----------------------------------------------------------------------------------------------------*/
-
-            $result_admin = $sql_admin->fetchAll();   // il doit m'afficher l'utilisateur au id $X
+            /* - Je fais une recherche dans ma db pour avoir mon tout premier que j'affecte à  $X - */
+            $num_admin = $connexion->prepare("SELECT id FROM `user` ORDER BY id ASC LIMIT 1");
+            $num_admin->execute();  /*--  ATTENTION renvoi un booleen et non une valeur! Utiliser la methode fetch
+  (all - object -column - ... ) pour avoir le résultat de la requete --*/
+            $x = $num_admin->fetchColumn();
 
 
-                if($user_id === $result_admin[0]['id']) {     //est-ce que le dernier utilisateur à l'id $X ?
+                if($user_id == $x) {
 
-                /* - Si oui, son admin devient "1" - */
-                $modif_admin = $connexion->prepare("UPDATE user SET admin = 1 WHERE id = ? ");
-                $modif_admin->bindValue(1, $user_id);
-                $modif_admin->execute();
+                    /* - Si oui, son admin devient "1" - */
+                    $modif_admin = $connexion->prepare("UPDATE user SET admin = 1 WHERE id = ? ");
+                    $modif_admin->bindValue(1, $user_id);
+                    $modif_admin->execute();
 
-                $url = 'index.php?sent=page/login';
-
-                $_SESSION['alert']       = 'Bienvenue admin ' . $username . ' ! Tu peux désormais te connecter :)';
-                $_SESSION['alert-color'] = 'success';
+                    $url = 'index.php?sent=page/login';
+                    $_SESSION['alert']       = 'Bienvenue admin ' . $username . ' ! Tu peux désormais te connecter :)';
+                    $_SESSION['alert-color'] = 'success';
 
                 } else{
 
@@ -81,12 +66,15 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
                     $modif_admin->execute();
 
                     $url = 'index.php?sent=page/login';
-
                     $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
                     $_SESSION['alert-color'] = 'success';
 
             }
-        }
+
+            /*----------------------------------------------------------------------------------------------------*/
+
+
+        } /* - FIN de mon IF pour la ligne supplémentaire -  */
 
     } /* - Fermeture du "else" de ma fct userExist - */
 
