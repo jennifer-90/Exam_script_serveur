@@ -31,7 +31,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
         $time_connect->execute($param);
 
         /* Définir la session de l'utilisateur connecté */
-        $param = [ $username ];
+
         $id= $connexion->prepare("SELECT id FROM `user` WHERE username = ?");
         $id->execute($param);
         $user_id = $id->fetchColumn();
