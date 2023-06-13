@@ -1,5 +1,5 @@
 <?php
-/* -- °°page/create°°  ==> app/create ==> DB  -- */
+/* -- °°page/create°°  ==> app/create ==> DB  ==> page/login -- */
 ?>
 <div class="formu">
     <form action="index.php?sent=app/create" method="post">

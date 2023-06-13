@@ -1,5 +1,7 @@
 <?php
-session_start();
+session_start(['cookie_lifetime' => 3600]);
+
+
 
 include_once 'config.php';
 include_once 'lib/fct_menu.php';
@@ -9,10 +11,6 @@ include_once 'lib/librairy.php';
 
 require_once 'page/header.html';
 require_once 'page/menu.php';
-
-
-$connexion= connexion();
-
 
 
 

@@ -1,10 +1,10 @@
 <?php
 
-/* -- °°view/login°°  ==>  app/login  ==>  view/profile  -- */
+/* -- °°page/login°°  ==>  app/login  ==>  ==>  index.php  -- */
 ?>
 
 <div class="formu">
-    <form action="" method="post">
+    <form action="index.php?sent=app/login" method="post">
         <div>
             <br><h2>** SE CONNECTER ** </h2><br>
             <label>

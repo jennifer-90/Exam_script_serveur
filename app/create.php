@@ -8,7 +8,7 @@ $url = 'index.php?sent=page/create';
 
 if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
 
-    if(userExist('username', 'username', [$_POST['username']])){
+    if(userExist('username', [$_POST['username']])){
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
         header('Location: index.php?sent=page/create' );
@@ -17,7 +17,6 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
         foreach ($_POST as $key => $values) {
             $$key = $values;
         }
-
 
         $parametre_requete = [
             trim($username),
@@ -36,8 +35,7 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
 
 
         if($requete->rowCount()) {
-            $user_id = $connexion->lastInsertId(); // Je recupere l'id du dernier utlisateur
-
+            $user_id = $connexion->lastInsertId();
             /*----------------------------------------------------------------------------------------------------*/
 
             /* - Je fais une recherche dans ma db pour avoir mon tout premier que j'affecte à  $X - */
@@ -68,10 +66,8 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
                     $url = 'index.php?sent=page/login';
                     $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
                     $_SESSION['alert-color'] = 'success';
-
             }
-
-            /*----------------------------------------------------------------------------------------------------*/
+                /*----------------------------------------------------------------------------------------------------*/
 
 
         } /* - FIN de mon IF pour la ligne supplémentaire -  */
