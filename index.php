@@ -13,11 +13,7 @@ require_once 'page/header.html';
 require_once 'page/menu.php';
 
 
-
-
-
-
-
+$connexion = connexion();
 
 
 

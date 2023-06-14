@@ -40,7 +40,7 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
 
         $_SESSION['alert']       = 'Bienvenue '. $username. '!';
         $_SESSION['alert-color'] = 'success';
-        header('Location: index.php?' );
+        header('Location: index.php?sent=page/profile' );
 
     } else{
         $_SESSION['alert']       = '&#9940; Cet utilisateur n\'existe pas &#9940;';

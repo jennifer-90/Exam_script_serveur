@@ -59,8 +59,8 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
                 } else{
 
                     /* - Si non, son admin devient "0" - */
-                    $modif_admin = $connexion->prepare("UPDATE user SET admin = 0 WHERE NOT id = ?");
-                    $modif_admin->bindValue(1, $user_id);
+                    $modif_admin = $connexion->prepare("UPDATE user SET admin = 0 WHERE id > ?");
+                    $modif_admin->bindValue(1, $x);
                     $modif_admin->execute();
 
                     $url = 'index.php?sent=page/login';
