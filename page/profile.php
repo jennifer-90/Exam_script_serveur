@@ -31,7 +31,6 @@ if(!empty($_SESSION['user_id'])) {
             <tbody>
 
             <?php
-            while ($results){
                 echo
                 '<tr>
                     <td>Username :</td>
@@ -61,8 +60,6 @@ if(!empty($_SESSION['user_id'])) {
                     <td>Votre statut :</td>
                     <td>'.$results->admin.'</td>
                 </tr>';
-                die;
-            }
 
             ?>
 
@@ -71,8 +68,16 @@ if(!empty($_SESSION['user_id'])) {
 
     <?php
 
-
 }
 
+?>
+
+    <?php
+        if(!empty($_SESSION['user_id'])){
+    ?>
+         <br><button type="submit" class="submit"><a href="index.php?sent=page/update">Modification de votre profil</a></button>
+    <?php
+        }
+    ?>
 
 
