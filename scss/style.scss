@@ -3,12 +3,17 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-/* - - - - - header - - - - - - */
+/* - - - - - TITRES- - - - - - */
 
 h1{
     display: flex;
     justify-content: center;
     font-size: 5rem;
+}
+
+h2, h3 {
+    display: flex;
+    justify-content: center;
 }
 
 /* - - - - - MENU - - - - - - */
@@ -40,10 +45,7 @@ nav {
 }
 
 /* - - - - - LISTE DES COURS - - - - - - */
-h2{
-    display: flex;
-    justify-content: center;
-}
+
 table{
     border: dotted black 1px;
     margin: auto;
@@ -59,8 +61,35 @@ table{
             cursor: pointer;
         }
     }
+    th {
+        background-color: rgba(255, 255, 0, 0.28);
+    }
 }
 
+
+
+/* - - - - - ADMIN - - - - - - */
+
+.tableau_admin {
+    border: dotted black 1px;
+    margin: auto;
+    line-height: 1.5rem;
+    width: 60rem;
+
+    th, td {
+        border: dotted black 1px;
+
+        &:hover {
+            background-color: olivedrab;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    th {
+        background-color: rgba(255, 255, 0, 0.28);
+    }
+}
 
 /* - - - - - LOGIN & CREATE - - - - - - */
 
@@ -112,6 +141,19 @@ input[type='submit']{
     }
 }
 
+/* - - - - - PROFILE -> UPDATE - - - - - - */
+
+.submit_update{
+    font-size: 1.3rem;
+    a {
+        text-decoration: none;
+    }
+    &:hover{
+        background-color: rgba(105, 105, 105, 0.48);
+        cursor: pointer;
+
+    }
+}
 
 /* - - - - - $_SESSION - - - - - - */
 

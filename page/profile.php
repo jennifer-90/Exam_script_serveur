@@ -23,8 +23,8 @@ if(!empty($_SESSION['user_id'])) {
           <table>
             <thead>
                 <tr>
-                    <th>Intitulé</th>
-                    <th>Valeur</th>
+                    <th>INTITULE</th>
+                    <th>INFORMATION</th>
                 </tr>
             </thead>
 
@@ -33,32 +33,32 @@ if(!empty($_SESSION['user_id'])) {
             <?php
                 echo
                 '<tr>
-                    <td>Username :</td>
-                    <td>'.$results->username.'</td>
+                    <td>&nbsp;&#x2666; Username :</td>
+                    <td>&nbsp;&#x2666;  '.$results->username.'</td>
                 </tr>';
                 echo
                 '<tr>
-                    <td>Email :</td>
-                    <td>'.$results->email.'</td>
+                    <td>&nbsp;&#x2666;  Email :</td>
+                    <td>&nbsp;&#x2666;  '.$results->email.'</td>
                 </tr>';
 
 
                 echo
                 '<tr>
-                    <td>Date de création :</td>
-                    <td>'.$results->created.'</td>
+                    <td>&nbsp;&#x2666;  Date de création :</td>
+                    <td>&nbsp;&#x2666;  '.$results->created.'</td>
                 </tr>';
 
                 echo
                 '<tr>
-                    <td>Dernière connexion :</td>
-                    <td>'.$results->lastlogin.'</td>
+                    <td>&nbsp;&#x2666;  Dernière connexion :</td>
+                    <td>&nbsp;&#x2666;  '.$results->lastlogin.'</td>
                 </tr>';
 
                echo
                '<tr>
-                    <td>Votre statut :</td>
-                    <td>'.$results->admin.'</td>
+                    <td>&nbsp;&#x2666;  Votre statut :</td>
+                    <td>&nbsp;&#x2666;  '.$results->admin.'</td>
                 </tr>';
 
             ?>
@@ -75,7 +75,9 @@ if(!empty($_SESSION['user_id'])) {
     <?php
         if(!empty($_SESSION['user_id'])){
     ?>
-         <br><button type="submit" class="submit"><a href="index.php?sent=page/update">Modification de votre profil</a></button>
+         <br><button type="submit" class="submit_update"><a href="index.php?sent=page/update"> &#x1F449; Modification
+                                                                                               de votre
+                                                                                        profil</a></button>
     <?php
         }
     ?>

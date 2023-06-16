@@ -27,6 +27,9 @@ if(!empty($_SESSION['user_id'])){
         $query = $connexion->query("$sql");
         $query->execute();
 
+
+
+        // ATTENTION REFAIRE LE MESSAGE EN FONCTION EMAIL/PWD !
         header('Location: index.php?sent=page/profile');
         $_SESSION['alert']       = 'Votre email à bien été modifié &#128077;';
         $_SESSION['alert-color'] = 'success';

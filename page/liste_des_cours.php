@@ -10,8 +10,8 @@
 <table>
     <thead>
         <tr>
-            <th>Cours</th>
-            <th>Codes</th>
+            <th>COURS</th>
+            <th>CODES</th>
         </tr>
     </thead>
 

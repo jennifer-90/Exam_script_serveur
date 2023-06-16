@@ -2,11 +2,16 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-/* - - - - - header - - - - - - */
+/* - - - - - TITRES- - - - - - */
 h1 {
   display: flex;
   justify-content: center;
   font-size: 5rem;
+}
+
+h2, h3 {
+  display: flex;
+  justify-content: center;
 }
 
 /* - - - - - MENU - - - - - - */
@@ -34,11 +39,6 @@ nav a:hover {
 }
 
 /* - - - - - LISTE DES COURS - - - - - - */
-h2 {
-  display: flex;
-  justify-content: center;
-}
-
 table {
   border: dotted black 1px;
   margin: auto;
@@ -52,6 +52,28 @@ table th:hover, table td:hover {
   background-color: olivedrab;
   color: white;
   cursor: pointer;
+}
+table th {
+  background-color: rgba(255, 255, 0, 0.28);
+}
+
+/* - - - - - ADMIN - - - - - - */
+.tableau_admin {
+  border: dotted black 1px;
+  margin: auto;
+  line-height: 1.5rem;
+  width: 60rem;
+}
+.tableau_admin th, .tableau_admin td {
+  border: dotted black 1px;
+}
+.tableau_admin th:hover, .tableau_admin td:hover {
+  background-color: olivedrab;
+  color: white;
+  cursor: pointer;
+}
+.tableau_admin th {
+  background-color: rgba(255, 255, 0, 0.28);
 }
 
 /* - - - - - LOGIN & CREATE - - - - - - */
@@ -90,6 +112,18 @@ table th:hover, table td:hover {
 }
 
 input[type=submit]:hover {
+  background-color: rgba(105, 105, 105, 0.48);
+  cursor: pointer;
+}
+
+/* - - - - - PROFILE -> UPDATE - - - - - - */
+.submit_update {
+  font-size: 1.3rem;
+}
+.submit_update a {
+  text-decoration: none;
+}
+.submit_update:hover {
   background-color: rgba(105, 105, 105, 0.48);
   cursor: pointer;
 }

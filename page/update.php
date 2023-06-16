@@ -21,7 +21,7 @@ if(!empty($_SESSION['user_id'])){
 
             <input type="submit" value="Modifié"><br><br>
 
-            <button type="submit" class="submit"><a href="index.php?sent=page/profile">RETOUR</a></button>
+            <button type="submit" class="submit_update"><a href="index.php?sent=page/profile">RETOUR &#128281;</a></button>
     </form>
         </div>
 </div>
