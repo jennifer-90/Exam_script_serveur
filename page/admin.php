@@ -18,6 +18,13 @@ if(!empty($_SESSION['user_id'])){
                 $result = $sql->fetchAll(PDO::FETCH_OBJ);
 
                 foreach($result as $key){
+
+                    if($key->admin == 1){
+                        $admin = 'ADMIN &#10004;';
+                    } else{
+                        $admin = 'PAS ADMIN &#10006; ';
+                    }
+
                     echo $tab1;
                     echo    '<tr><td>&nbsp;&#x2666; id = </td> <td>&nbsp;&#x2666; '.$key->id.'</td></tr>
                             <tr><td>&nbsp;&#x2666; Nom = </td> <td>&nbsp;&#x2666; '.$key->username.'</td></tr>
@@ -25,9 +32,27 @@ if(!empty($_SESSION['user_id'])){
                             <tr><td>&nbsp;&#x2666; Date de création = </td> <td>&nbsp;&#x2666; '.$key->created.'</td></tr>
                             <tr><td>&nbsp;&#x2666; Date de la dernière connexion = </td> <td>&nbsp;&#x2666; '
                         .$key->lastlogin.'</td></tr>
-                            <tr><td>&nbsp;&#x2666; Statut admin = </td> <td>&nbsp;&#x2666; '.$key->admin.'</td></tr>';
+                            <tr><td>&nbsp;&#x2666; Statut admin = </td> <td>&nbsp;&#x2666; '.$admin.'</td></tr>';
                     echo $tab2;
                 } ?>
+
+
+        <h3>** Désigner une personne en second-admin, tout en gardant votre sécurité de rester admin **</h3>
+        <p>Ce second admin n'aura pas la possiblité de changer votre statut admin, mais aura toute la fois la
+           possiblité de changer celui des autres.</p>
+
+        <form action="index.php?sent=app/admin" method="post">
+            <span>Choix du statut admin : 1 = (Admin) ou 2 = (Pas Admin) :<br><br></span>
+            <input type="number" name="admin" id="admin" placeholder="admin"><br><br>
+            <span>l'id de l'utilisateur :<br><br></span>
+            <input type="number" name="id" id="id" placeholder="id">
+
+            <input type="submit" value="OK">
+
+        </form>
+
+
+
 
     <?php
     } else {

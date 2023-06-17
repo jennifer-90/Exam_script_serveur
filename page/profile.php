@@ -17,6 +17,12 @@ if(!empty($_SESSION['user_id'])) {
     $query->execute();
     $results = $query->fetchObject();
 
+    if(menu_admin($_SESSION['user_id'])){
+        $admin = $results->admin;
+        $admin = 'Oui, vous êtes admin de ce site';
+    } else{
+        $admin = 'Non, vous n\'êtes pas admin de ce site';
+    }
 
 ?>
         <h2>** VOS INFORMATIONS SUR VOTRE PROFIL: ** </h2>
@@ -58,8 +64,7 @@ if(!empty($_SESSION['user_id'])) {
                echo
                '<tr>
                     <td>&nbsp;&#x2666;  Votre statut :</td>
-                    <td>&nbsp;&#x2666;  '.$results->admin.'</td>
-                </tr>';
+                    <td> &nbsp;&#x2666;  '.$admin.'</td></tr>';
 
             ?>
 

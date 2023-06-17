@@ -1,7 +1,5 @@
 <?php
 
-
-
 /* -- page/create  ==> °°app/create°° ==> DB  ==>  page/login -- */
 
 $url = 'index.php?sent=page/create';
@@ -24,7 +22,6 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
             $email,
         ];
 
-
         /* - - - - CONNEXION A LA DB - - - - */
         /* - - - - CONNECT - */
         global $connexion;
@@ -32,7 +29,6 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
         $requete = $connexion->prepare("INSERT INTO user (username, password, email, created ) VALUES (?, ?, ?, NOW() )");
         /* - - - - EXECUTE - */
         $requete->execute($parametre_requete);
-
 
         if($requete->rowCount()) {
             $user_id = $connexion->lastInsertId();
@@ -43,7 +39,6 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
             $num_admin->execute();  /*--  ATTENTION renvoi un booleen et non une valeur! Utiliser la methode fetch
   (all - object -column - ... ) pour avoir le résultat de la requete --*/
             $x = $num_admin->fetchColumn();
-
 
                 if($user_id == $x) {
 
@@ -68,7 +63,6 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
                     $_SESSION['alert-color'] = 'success';
             }
                 /*----------------------------------------------------------------------------------------------------*/
-
 
         } /* - FIN de mon IF pour la ligne supplémentaire -  */
 

@@ -2,7 +2,6 @@
 
 /* -- page/login  ==>  °°app/login°°  ==>  index.php  -- */
 
-
 if(!empty($_POST['username']) && !empty($_POST['password'])){
 
     foreach ($_POST as $key => $values) {
@@ -36,7 +35,6 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
         $id->execute($param);
         $user_id = $id->fetchColumn();
         $_SESSION['user_id']= $user_id;
-
 
         $_SESSION['alert']       = 'Bienvenue '. $username. '!';
         $_SESSION['alert-color'] = 'success';
