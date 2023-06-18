@@ -1,12 +1,6 @@
 <?php
 
-
-
-/* - verifier si la session est active ou non - idem que la condition faite dans le menu - */
-
 if(!empty($_SESSION['user_id'])) {
-
-    /* - Aller chercher dans la base de données les infos de l'utilisateur qui connecté - via la session  - */
 
     $x = $_SESSION['user_id'];
 
@@ -47,8 +41,6 @@ if(!empty($_SESSION['user_id'])) {
                     <td>&nbsp;&#x2666;  Email :</td>
                     <td>&nbsp;&#x2666;  '.$results->email.'</td>
                 </tr>';
-
-
                 echo
                 '<tr>
                     <td>&nbsp;&#x2666;  Date de création :</td>
@@ -65,9 +57,7 @@ if(!empty($_SESSION['user_id'])) {
                '<tr>
                     <td>&nbsp;&#x2666;  Votre statut :</td>
                     <td> &nbsp;&#x2666;  '.$admin.'</td></tr>';
-
             ?>
-
             </tbody>
         </table>
 

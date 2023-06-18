@@ -17,11 +17,13 @@ if(!empty($_SESSION['user_id'])){
                 $sql->execute();
                 $result = $sql->fetchAll(PDO::FETCH_OBJ);
 
+                $nb_user= count($result);
+
                 foreach($result as $key){
 
                     if($key->admin == 1){
                         $admin = 'ADMIN &#10004;';
-                    } else{
+                    } else {
                         $admin = 'PAS ADMIN &#10006; ';
                     }
 
@@ -35,24 +37,39 @@ if(!empty($_SESSION['user_id'])){
                             <tr><td>&nbsp;&#x2666; Statut admin = </td> <td>&nbsp;&#x2666; '.$admin.'</td></tr>';
                     echo $tab2;
                 } ?>
+        
+        <div class="admin_update">
+            <h3>** Désigner une personne en second-admin, tout en gardant votre sécurité de rester chef admin **</h3>
+            <p>Ce second admin n'aura pas la possiblité de changer votre statut admin, mais aura toute la fois la
+               possiblité de changer celui des autres.</p>
 
+            <form action="index.php?sent=app/admin" method="post">
 
-        <h3>** Désigner une personne en second-admin, tout en gardant votre sécurité de rester admin **</h3>
-        <p>Ce second admin n'aura pas la possiblité de changer votre statut admin, mais aura toute la fois la
-           possiblité de changer celui des autres.</p>
+                <span>0 = Pas Admin : </span>
+                <input type="radio" name="admin" id="admin" value="0"><br><br>
+                <span> 1 = Admin : </span>
+                <input type="radio" name="admin" id="admin" value="1"><br><br>
 
-        <form action="index.php?sent=app/admin" method="post">
-            <span>Choix du statut admin : 1 = (Admin) ou 2 = (Pas Admin) :<br><br></span>
-            <input type="number" name="admin" id="admin" placeholder="admin"><br><br>
-            <span>l'id de l'utilisateur :<br><br></span>
-            <input type="number" name="id" id="id" placeholder="id">
+                <span>l'id de l'utilisateur :</span>
+                <input type="number" name="id" id="id" placeholder="id" max = "<?php echo $nb_user ?>">
 
-            <input type="submit" value="OK">
+                <input type="submit" value="OK">
+                <input type="reset" value="RESET">
+            </form>
+        </div>
 
-        </form>
+        <div class="admin_update">
+            <h3>** Changer les informations d'un utilisateur **</h3>
+            <form action="index.php?sent=app/admin" method="post">
 
-
-
+                <label for="username">Changer son nom :</label>
+                <input type="text" name="username" placeholder="username"><br><br>
+                <label for="username">Changer son email :</label>
+                <input type="text" name="email" placeholder="email"><br><br>
+                <input type="submit" value="OK">
+                <input type="reset" value="RESET">
+            </form>
+        </div>
 
     <?php
     } else {

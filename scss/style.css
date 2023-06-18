@@ -76,6 +76,18 @@ table th {
   background-color: rgba(255, 255, 0, 0.28);
 }
 
+.admin_update {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30rem;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.admin_update h3 {
+  text-align: center;
+}
+
 /* - - - - - LOGIN & CREATE - - - - - - */
 .formu {
   display: flex;

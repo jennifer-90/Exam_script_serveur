@@ -29,7 +29,7 @@ if(!empty($_SESSION['user_id'])){
 
                 $_SESSION['alert']       = 'Statut admin changé';
                 $_SESSION['alert-color'] = 'success';
-                header('Location : index.php?sent=page/profile');
+                header('Location: index.php?sent=page/profile');
 
             }
     }
