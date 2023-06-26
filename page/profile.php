@@ -11,7 +11,7 @@ if(!empty($_SESSION['user_id'])) {
     $query->execute();
     $results = $query->fetchObject();
 
-    if(menu_admin($_SESSION['user_id'])){
+    if(menuAdmin($_SESSION['user_id'])){
         $admin = $results->admin;
         $admin = 'Oui, vous êtes admin de ce site';
     } else{

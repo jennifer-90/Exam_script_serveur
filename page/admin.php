@@ -4,7 +4,7 @@ $tab1='<table class="tableau_admin"><thead><tr><th>INTITULE</th><th>INFORMATION<
 $tab2='</tbody></table><br>';
 
 if(!empty($_SESSION['user_id'])){
-    if(menu_admin($_SESSION['user_id'])){
+    if(menuAdmin($_SESSION['user_id'])){
     ?>
 
     <h2>** VOUS ETES ADMIN DE CE SITE ! &#128526; **</h2>
@@ -45,18 +45,27 @@ if(!empty($_SESSION['user_id'])){
 
             <form action="index.php?sent=app/admin" method="post">
 
-                <span>0 = Pas Admin : </span>
+                <span> 0 = Pas Admin : </span>
                 <input type="radio" name="admin" id="admin" value="0"><br><br>
                 <span> 1 = Admin : </span>
                 <input type="radio" name="admin" id="admin" value="1"><br><br>
 
+
                 <span>l'id de l'utilisateur :</span>
                 <input type="number" name="id" id="id" placeholder="id" max = "<?php echo $nb_user ?>">
+
 
                 <input type="submit" value="OK">
                 <input type="reset" value="RESET">
             </form>
         </div>
+
+
+
+
+
+
+
 
         <div class="admin_update">
             <h3>** Changer les informations d'un utilisateur **</h3>

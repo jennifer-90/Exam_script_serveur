@@ -1,7 +1,7 @@
 <?php
 
 
-function userExist($champs, array $valuesPost){
+function userExist(string $champs, array $valuesPost){
 
     $connexion= connexion();
 
@@ -19,13 +19,12 @@ function userExist($champs, array $valuesPost){
 
 
 
-function menu_admin($session){
-    $x = $session;
+function menuAdmin($session){
 
     $connexion = connexion();
 
     $query = $connexion->prepare("SELECT admin FROM user WHERE id = ?");
-    $query->bindValue(1, $x);
+    $query->bindValue(1, $session);
     $query->execute();
     $result = $query->fetchColumn();
 

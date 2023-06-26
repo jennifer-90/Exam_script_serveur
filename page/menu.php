@@ -12,7 +12,7 @@
             <?php
                 if(!empty($_SESSION['user_id'])){
 
-                    if(menu_admin($_SESSION['user_id'])){
+                    if(menuAdmin($_SESSION['user_id'])){
                         ?>
                         <li><a href="index.php?sent=page/admin">Admin</a></li>
                         <?php

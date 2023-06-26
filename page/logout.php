@@ -1,6 +1,7 @@
 <?php
 $x= $_SESSION['user_id'];
 
+
 $connexion = connexion();
 $sql = $connexion->prepare("SELECT username FROM user WHERE id = ?") ;
 $sql->bindValue(1,$x);

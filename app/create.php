@@ -10,6 +10,7 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
         header('Location: index.php?sent=page/create' );
+        die;
 
     } else {
         foreach ($_POST as $key => $values) {
