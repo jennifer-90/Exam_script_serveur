@@ -18,8 +18,11 @@ if(!empty($_GET['page'])){
 }
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
-function extension($string) {
+/**
+ * @param $string
+ * @return void
+ */
+function extension($string):void {
 
     if (is_array(FILES_EXTENSIONS)) {
         foreach (FILES_EXTENSIONS as $key) {

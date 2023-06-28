@@ -1,7 +1,12 @@
 <?php
 
 
-function userExist(string $champs, array $valuesPost) {
+/**
+ * @param string $champs
+ * @param array $valuesPost
+ * @return bool
+ */
+function userExist(string $champs, array $valuesPost):bool {
 
     $connexion = connexion();
 
@@ -13,13 +18,14 @@ function userExist(string $champs, array $valuesPost) {
     $result = $query->fetchAll();
 
     return count($result) > 0;
-
 }
 
-;
 
-
-function menuAdmin($session) {
+/**
+ * @param $session
+ * @return true|void
+ */
+function menuAdmin($session){
 
     $connexion = connexion();
 

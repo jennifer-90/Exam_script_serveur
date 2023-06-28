@@ -10,7 +10,6 @@ function exportJSON(object $user): void {
     echo json_encode($user);
 }
 
-
 /*-----------------------------------------------------*/
 
 /**
@@ -32,7 +31,7 @@ function getUser(string $field, string $value): mixed {
     $request->execute($params);
     return $request->fetchObject();
 }
-   
+
 
 
 /**
