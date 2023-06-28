@@ -23,12 +23,11 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
             $email,
         ];
 
-        /* - - - - CONNEXION A LA DB - - - - */
-        /* - - - - CONNECT - */
+
         global $connexion;
-        /* - - - - QUERY - */
+
         $requete = $connexion->prepare("INSERT INTO user (username, password, email, created ) VALUES (?, ?, ?, NOW() )");
-        /* - - - - EXECUTE - */
+
         $requete->execute($parametre_requete);
 
         if($requete->rowCount()) {

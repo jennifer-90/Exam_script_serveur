@@ -5,11 +5,12 @@ $x = $_SESSION['user_id'];
 if(!empty($x)){
 
     $email = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) ;
-    $pwd = $_POST['password'];
+    $pwd = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $msg = 'Les champs modifié(s): <br>: ';
 
     if(!empty($_POST['email']) || !empty($_POST['password'])){
+
         $sql = "UPDATE user SET ";
 
         if(!empty($_POST['email']) && !empty($_POST['password'])){
@@ -23,6 +24,7 @@ if(!empty($x)){
         } elseif(!empty($pwd)){
             $sql .= "`password` = '$pwd'";
             $msg .= ' - mot de passe';
+
         }
 
         $sql .= " WHERE `id`= $x";
