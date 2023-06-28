@@ -2,7 +2,7 @@
 
 /* -- page/login  ==>  °°app/login°°  ==>  index.php  -- */
 
-if(!empty($_POST['username']) && !empty($_POST['password'])){
+if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
     $connexion = connexion();
 
@@ -10,17 +10,17 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
         $$key = $values;
     }
 
-    $param=[
+    $param = [
         $username
-        ];
+    ];
 
-    if(userExist('username', [$_POST['username']])) {
+    if (userExist('username', [$_POST['username']])) {
 
-        $sql= $connexion->prepare("SELECT password FROM user WHERE username = ?");
+        $sql = $connexion->prepare("SELECT password FROM user WHERE username = ?");
         $sql->execute($param);
         $pwdDb = $sql->fetchObject();
 
-        if(password_verify($password, $pwdDb->password)){
+        if (password_verify($password, $pwdDb->password)) {
 
             $time_connect = $connexion->prepare("UPDATE user SET lastlogin = NOW() WHERE username = ? ");
             $time_connect->execute($param);
@@ -35,22 +35,26 @@ if(!empty($_POST['username']) && !empty($_POST['password'])){
             $_SESSION['alert']       = 'Bienvenue ' . $username . '!';
             $_SESSION['alert-color'] = 'success';
             header('Location: index.php?sent=page/profile');
+            die;
 
         } else {
             $_SESSION['alert']       = '&#9940; Mauvais mot de passe &#9940;';
             $_SESSION['alert-color'] = 'danger';
-            header('Location: index.php?sent=page/login' );
+            header('Location: index.php?sent=page/login');
+            die;
         }
 
-    } else{
+    } else {
         $_SESSION['alert']       = '&#9940; Cet utilisateur n\'existe pas &#9940;';
         $_SESSION['alert-color'] = 'danger';
-        header('Location: index.php?sent=page/login' );
+        header('Location: index.php?sent=page/login');
+        die;
     }
 
 } else {
     $_SESSION['alert']       = '&#9940; Veuillez remplir les champs &#9940;';
     $_SESSION['alert-color'] = 'danger';
-    header('Location: index.php?sent=page/login' );
+    header('Location: index.php?sent=page/login');
+    die;
 }
 

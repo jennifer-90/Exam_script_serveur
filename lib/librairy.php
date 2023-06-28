@@ -1,11 +1,11 @@
 <?php
 
 
-function userExist(string $champs, array $valuesPost){
+function userExist(string $champs, array $valuesPost) {
 
-    $connexion= connexion();
+    $connexion = connexion();
 
-    $sql="SELECT $champs FROM user WHERE $champs = ?";
+    $sql = "SELECT $champs FROM user WHERE $champs = ?";
 
     $query = $connexion->prepare($sql);
     $query->execute($valuesPost);
@@ -14,12 +14,12 @@ function userExist(string $champs, array $valuesPost){
 
     return count($result) > 0;
 
-};
+}
+
+;
 
 
-
-
-function menuAdmin($session){
+function menuAdmin($session) {
 
     $connexion = connexion();
 
@@ -28,9 +28,10 @@ function menuAdmin($session){
     $query->execute();
     $result = $query->fetchColumn();
 
-    if($result == 1) {
+    if ($result == 1) {
         return true;
     }
 }
+
 
 

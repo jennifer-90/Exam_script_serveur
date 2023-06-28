@@ -6,7 +6,8 @@
 <div class="formu">
     <form action="index.php?sent=app/login" method="post">
         <div>
-            <br><h2>** SE CONNECTER ** </h2><br>
+            <br>
+            <h2>** SE CONNECTER ** </h2><br>
             <label>
                 <span>Identifiant:<br><br></span>
                 <input type="text" name="username" id="username" placeholder="Identifiant">
@@ -20,4 +21,6 @@
     </form>
     <button type="submit" class="submit"><a href="index.php?sent=page/create">&#128073; Créé-toi un compte</a></button>
 </div>
+
+
 

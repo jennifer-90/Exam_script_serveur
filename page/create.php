@@ -4,7 +4,8 @@
 <div class="formu">
     <form action="index.php?sent=app/create" method="post">
         <div>
-            <br><h2>** CREATION D'UN COMPTE** </h2><br>
+            <br>
+            <h2>** CREATION D'UN COMPTE** </h2><br>
             <label>
                 <span>Identifiant:<br><br></span>
                 <input type="text" name="username" id="username" placeholder="Identifiant">

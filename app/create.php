@@ -4,12 +4,12 @@
 
 $url = 'index.php?sent=page/create';
 
-if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])){
+if (!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])) {
 
-    if(userExist('username', [$_POST['username']])){
+    if (userExist('username', [$_POST['username']])) {
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
-        header('Location: index.php?sent=page/create' );
+        header('Location: index.php?sent=page/create');
         die;
 
     } else {
@@ -30,7 +30,7 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
 
         $requete->execute($parametre_requete);
 
-        if($requete->rowCount()) {
+        if ($requete->rowCount()) {
             $user_id = $connexion->lastInsertId();
             /*----------------------------------------------------------------------------------------------------*/
 
@@ -40,37 +40,38 @@ if(!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_E
   (all - object -column - ... ) pour avoir le résultat de la requete --*/
             $x = $num_admin->fetchColumn();
 
-                if($user_id == $x) {
+            if ($user_id == $x) {
 
-                    /* - Si oui, son admin devient "1" - */
-                    $modif_admin = $connexion->prepare("UPDATE user SET admin = 1 WHERE id = ? ");
-                    $modif_admin->bindValue(1, $user_id);
-                    $modif_admin->execute();
+                /* - Si oui, son admin devient "1" - */
+                $modif_admin = $connexion->prepare("UPDATE user SET admin = 1 WHERE id = ? ");
+                $modif_admin->bindValue(1, $user_id);
+                $modif_admin->execute();
 
-                    $url = 'index.php?sent=page/login';
-                    $_SESSION['alert']       = 'Bienvenue admin ' . $username . ' ! Tu peux désormais te connecter :)';
-                    $_SESSION['alert-color'] = 'success';
+                $url                     = 'index.php?sent=page/login';
+                $_SESSION['alert']       = 'Bienvenue admin ' . $username . ' ! Tu peux désormais te connecter :)';
+                $_SESSION['alert-color'] = 'success';
 
-                } else{
+            } else {
 
-                    /* - Si non, son admin devient "0" - */
-                    $modif_admin = $connexion->prepare("UPDATE user SET admin = 0 WHERE id > ?");
-                    $modif_admin->bindValue(1, $x);
-                    $modif_admin->execute();
+                /* - Si non, son admin devient "0" - */
+                $modif_admin = $connexion->prepare("UPDATE user SET admin = 0 WHERE id > ?");
+                $modif_admin->bindValue(1, $x);
+                $modif_admin->execute();
 
-                    $url = 'index.php?sent=page/login';
-                    $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
-                    $_SESSION['alert-color'] = 'success';
+                $url                     = 'index.php?sent=page/login';
+                $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
+                $_SESSION['alert-color'] = 'success';
             }
-                /*----------------------------------------------------------------------------------------------------*/
+            /*----------------------------------------------------------------------------------------------------*/
 
         } /* - FIN de mon IF pour la ligne supplémentaire -  */
 
     } /* - Fermeture du "else" de ma fct userExist - */
 
-/* - FIN DE MON TOUT PREMIER IF - */
+    /* - FIN DE MON TOUT PREMIER IF - */
 } else {
-    $_SESSION['alert'] = '&#9940; La création de votre compte a échouée, veuillez recommencer &#9940;';
+    $_SESSION['alert']       = '&#9940; La création de votre compte a échouée, veuillez recommencer &#9940;';
     $_SESSION['alert-color'] = 'danger';
-    }
-header('Location:'. $url);
+}
+header('Location:' . $url);
+die;

@@ -2,7 +2,6 @@
 session_start(['cookie_lifetime' => 3600]);
 
 
-
 include_once 'config.php';
 include_once 'lib/fct_menu.php';
 include_once 'lib/connexion_pdo.php';
@@ -14,11 +13,6 @@ require_once 'page/menu.php';
 
 
 $connexion = connexion();
-
-
-
-
-
 
 
 if (!empty($_SESSION['alert'])) {
@@ -35,15 +29,14 @@ if (!empty($_SESSION['alert'])) {
 }
 
 
-
-
-
-if(!empty($_GET['sent'])){
+if (!empty($_GET['sent'])) {
     extension($_GET['sent']);
 }
 
 
-
-
-
 require_once 'page/header.html';
+
+
+
+
+

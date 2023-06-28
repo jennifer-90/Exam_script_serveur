@@ -1,4 +1,3 @@
-
 <?php
 
 ?>
@@ -6,10 +5,10 @@
 <h2>** LA LISTE DES COURS DANS NOTRE ECOLE: ** </h2>
 <table>
     <thead>
-        <tr>
-            <th>COURS</th>
-            <th>CODES</th>
-        </tr>
+    <tr>
+        <th>COURS</th>
+        <th>CODES</th>
+    </tr>
     </thead>
 
     <tbody>
@@ -18,7 +17,7 @@
     connexion();
     global $connexion;
 
-    $sql = 'SELECT * FROM course';
+    $sql   = 'SELECT * FROM course';
     $query = $connexion->prepare($sql);
     $query->execute();
     $result = $query->fetchObject();

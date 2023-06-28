@@ -1,9 +1,6 @@
 <?php
 
 
-
-
-
 /* * * * * * * * * * * * * * *  * * * * * * * * * * * * * *  * * * * * * * *
 
 ** Premier essai sur index.php avant de mettre ce code dans une fonction : **
@@ -22,11 +19,9 @@ if(!empty($_GET['page'])){
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
+function extension($string) {
 
-
-function extension($string){
-
-    if(is_array(FILES_EXTENSIONS)){
+    if (is_array(FILES_EXTENSIONS)) {
         foreach (FILES_EXTENSIONS as $key) {
             $file_name = $string . $key;
 
