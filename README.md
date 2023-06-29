@@ -30,12 +30,12 @@ système de gestion de base de données (exemple: MySQL)
 ## Utilisation - Accès au site:
 
 Pour acceder au site, ouvrez la page d'un navigateur et taper dans l'url: <br>
-&#x25B6;&#x25B6; 'http://localhost/Le_cheminement_de_votre_dossier_pour_acceder_au_projet/'
+&#x25B6;&#x25B6; `http://localhost/Le_cheminement_de_votre_dossier_pour_acceder_au_projet/`
 
 <b>Exemple</b> : le projet se trouve dans le dossier de votre serveur local: <br>
-&#x25B6;&#x25B6;'wamp64/www/NOM_DU_PROJET '<br><br>
+&#x25B6;&#x25B6;`wamp64/www/NOM_DU_PROJET`<br><br>
 Alors on mettra cette adresse url dans notre navigateur: <br>
-&#x25B6;&#x25B6; 'http://localhost/NOM_DU_PROJET/'
+&#x25B6;&#x25B6; `http://localhost/NOM_DU_PROJET/`
 
 ## Utilisation - L'administrateur du site:
 
