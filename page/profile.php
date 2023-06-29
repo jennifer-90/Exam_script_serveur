@@ -66,9 +66,10 @@ if (!empty($_SESSION['user_id'])) {
 
 }
 
+echo '<a href="app/export.php"> EXPORTER </a><br>'
 ?>
 
-<a href="app/export.php"> EXPORTER </a><br>
+
 
 <?php
 if (!empty($_SESSION['user_id'])) {
