@@ -63,11 +63,13 @@ if (!empty($_SESSION['user_id'])) {
 
     <?php
 
-
+    echo '<a href="app/export.php"> EXPORTER </a><br>';
 }
-
-echo '<a href="app/export.php"> EXPORTER </a><br>'
 ?>
+
+
+
+
 
 
 

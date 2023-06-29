@@ -2,14 +2,14 @@
 session_start(['cookie_lifetime' => 3600]);
 
 
-include_once 'config.php';
-include_once 'lib/fct_menu.php';
-include_once 'lib/connexion_pdo.php';
-include_once 'lib/librairy.php';
+require_once 'config.php';
+require_once 'lib/fct_menu.php';
+require_once 'lib/connexion_pdo.php';
+require_once 'lib/librairy.php';
 
 
 require_once 'page/header.html';
-require_once 'page/menu.php';
+include_once 'page/menu.php';
 
 
 $connexion = connexion();
