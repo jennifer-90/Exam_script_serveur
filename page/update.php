@@ -2,22 +2,31 @@
 
 if (!empty($_SESSION['user_id'])) {
 
-    ?>
+    $user = getUser('id', $_SESSION['user_id']);
 
+    $output='
+    
     <div class="form">
         <form action="index.php?sent=app/update" method="post">
             <div>
                 <br>
                 <h2>** MODIFICATION DE VOTRE PROFIL **</h2>
 
+                <input type="hidden" name="id" value="' . $user->id . '">
+                
                 <label>
-                    <span>Votre nouveau mot de passe: </span>
-                    <input type="password" name="password" placeholder="Votre nouveau mot de passe">
+                    <span>Votre ancien mot de passe: </span>
+                    <input type="password" name="o_password" placeholder="Votre ancien mot de passe">
                 </label><br><br>
 
                 <label>
-                    <span>Votre nouvel email: </span>
-                    <input type="email" name="email" placeholder="Votre nouveau email">
+                    <span>Votre nouveau mot de passe: </span>
+                    <input type="password" name="n_password" placeholder="Votre nouveau mot de passe">
+                </label><br><br>
+
+                <label>
+                    <span>Votre nouveau email: </span>
+                    <input type="email" name="email" value="'.$user->email.'">
                 </label><br><br>
 
                 <input type="submit" value="Modifié"><br><br>
@@ -26,9 +35,9 @@ if (!empty($_SESSION['user_id'])) {
                 </button>
         </form>
     </div>
-    </div>
+    </div>';
 
-    <?php
+   echo $output;
 
 } else {
     echo "&#9940; &#128558; Héhé bien essayé, mais tu n'as rien à faire ici ! &#128558; &#9940; ";

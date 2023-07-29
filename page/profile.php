@@ -44,13 +44,13 @@ if (!empty($_SESSION['user_id'])) {
         echo
             '<tr>
                     <td>&nbsp;&#x2666;  Date de création :</td>
-                    <td>&nbsp;&#x2666;  ' . $results->created . '</td>
+                    <td>&nbsp;&#x2666;  ' . changeDate($results->created) . '</td>
                 </tr>';
 
         echo
             '<tr>
                     <td>&nbsp;&#x2666;  Dernière connexion :</td>
-                    <td>&nbsp;&#x2666;  ' . $results->lastlogin . '</td>
+                    <td>&nbsp;&#x2666;  ' . changeDate($results->lastlogin ). '</td>
                 </tr>';
 
         echo

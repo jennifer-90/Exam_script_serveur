@@ -6,7 +6,7 @@ $url = 'index.php?sent=page/create';
 
 if (!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_EMAIL) && ($_POST['password'])) {
 
-    if (userExist('username', [$_POST['username']])) {
+    if (userExist('username', $_POST['username'])) {
         $_SESSION['alert']       = '&#9940; Cet utilisateur existe déjà &#9940;';
         $_SESSION['alert-color'] = 'danger';
         header('Location: index.php?sent=page/create');
@@ -34,7 +34,6 @@ if (!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_
             $user_id = $connexion->lastInsertId();
             /*----------------------------------------------------------------------------------------------------*/
 
-
             $num_admin = $connexion->prepare("SELECT id FROM `user` ORDER BY id ASC LIMIT 1");
             $num_admin->execute();  /*--  ATTENTION renvoi un booleen et non une valeur! Utiliser la methode fetch
             (all - object -column - ... ) pour avoir le résultat de la requete --*/
@@ -45,21 +44,14 @@ if (!empty($_POST['username']) && filter_var(($_POST['email']), FILTER_VALIDATE_
                 $modif_admin = $connexion->prepare("UPDATE user SET admin = 1 WHERE id = ? ");
                 $modif_admin->bindValue(1, $user_id);
                 $modif_admin->execute();
-
-                $url                     = 'index.php?sent=page/login';
-                $_SESSION['alert']       = 'Bienvenue admin ' . $username . ' ! Tu peux désormais te connecter :)';
-                $_SESSION['alert-color'] = 'success';
-
-            } else {
-
-                $modif_admin = $connexion->prepare("UPDATE user SET admin = 0 WHERE id > ?");
-                $modif_admin->bindValue(1, $x);
-                $modif_admin->execute();
-
-                $url                     = 'index.php?sent=page/login';
-                $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
-                $_SESSION['alert-color'] = 'success';
             }
+
+            $url                     = 'index.php?sent=page/login';
+            $_SESSION['alert']       = 'Bienvenue ' . $username . ' ! Tu peux désormais te connecter :)';
+            $_SESSION['alert-color'] = 'success';
+
+
+
             /*----------------------------------------------------------------------------------------------------*/
 
         } /* - FIN de mon IF pour la ligne supplémentaire -  */

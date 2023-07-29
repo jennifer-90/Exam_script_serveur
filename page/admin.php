@@ -42,8 +42,8 @@ if (!empty($_SESSION['user_id'])) {
                             <td>' . $key->id . '</td>
                             <td>' . $key->username . '</td>
                             <td>' . $key->email . '</td>
-                            <td>' . $key->created . '</td>
-                            <td>' . $key->lastlogin . '</td>
+                            <td>' . changeDate($key->created) . '</td>
+                            <td>' . changeDate($key->lastlogin) . '</td>
                             <td>' . $admin . '</td>
                             </form>
                             </td>

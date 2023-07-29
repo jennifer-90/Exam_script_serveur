@@ -14,7 +14,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username
     ];
 
-    if (userExist('username', [$_POST['username']])) {
+    if (userExist('username', $_POST['username'])) {
 
         $sql = $connexion->prepare("SELECT password FROM user WHERE username = ?");
         $sql->execute($param);
